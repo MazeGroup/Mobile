@@ -1,0 +1,102 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ng-cordova-oauth",
+        "scope": null,
+        "escapedName": "ng-cordova-oauth",
+        "name": "ng-cordova-oauth",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/descripto/Projects/Mapn/mapn"
+    ]
+  ],
+  "_from": "ng-cordova-oauth@latest",
+  "_id": "ng-cordova-oauth@0.3.0",
+  "_inCache": true,
+  "_location": "/ng-cordova-oauth",
+  "_nodeVersion": "4.6.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/ng-cordova-oauth-0.3.0.tgz_1479449397963_0.09369266266003251"
+  },
+  "_npmUser": {
+    "name": "nraboy",
+    "email": "nic@nraboy.com"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ng-cordova-oauth",
+    "scope": null,
+    "escapedName": "ng-cordova-oauth",
+    "name": "ng-cordova-oauth",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-cordova-oauth/-/ng-cordova-oauth-0.3.0.tgz",
+  "_shasum": "80d6f8833b22ce9d6a7f48a4ec3b154a94f3018a",
+  "_shrinkwrap": null,
+  "_spec": "ng-cordova-oauth",
+  "_where": "/home/descripto/Projects/Mapn/mapn",
+  "author": {
+    "name": "Nic Raboy",
+    "url": "https://www.nraboy.com"
+  },
+  "dependencies": {
+    "angular": "1.5.7"
+  },
+  "description": "Connect to Oauth providers using Apache Cordova and the InAppBrowser plugin",
+  "devDependencies": {
+    "angular-mocks": "1.5.7",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-uglify": "1.0.1",
+    "grunt-karma": "2.0.0",
+    "jasmine-core": "2.4.1",
+    "jssha": "1.6.0",
+    "karma": "1.1.0",
+    "karma-coverage": "1.0.0",
+    "karma-jasmine": "1.0.2",
+    "karma-phantomjs-launcher": "1.0.1",
+    "phantomjs-prebuilt": "2.1.7"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "80d6f8833b22ce9d6a7f48a4ec3b154a94f3018a",
+    "tarball": "https://registry.npmjs.org/ng-cordova-oauth/-/ng-cordova-oauth-0.3.0.tgz"
+  },
+  "gitHead": "555b5caafbe0b7a552c6dc418e3353f6615f24da",
+  "homepage": "https://www.thepolyglotdeveloper.com",
+  "keywords": [
+    "angularjs",
+    "oauth",
+    "api",
+    "apache cordova",
+    "phonegap",
+    "ionic framework"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "nraboy",
+      "email": "nic@nraboy.com"
+    }
+  ],
+  "name": "ng-cordova-oauth",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "0.3.0"
+}

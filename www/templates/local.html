@@ -1,0 +1,114 @@
+<style>
+    .popup-vertical-buttons .popup-buttons {
+  display: block;
+}
+.popup-vertical-buttons .popup-buttons .button{
+  display:block;
+  min-width: 100% !important;
+}
+</style>
+<div class="pages" ng-controller="LocalController">
+<div class="fixed-action-btn active">
+   <a class="btn-floating laranja" ng-click="TESTE()">
+   <i class="fa fa-gavel"></i>
+   </a>
+   <ul>
+      <li><a class="btn-floating cinza"><i class="material-icons"></i></a></li>
+   </ul>
+</div>
+   <div data-page="detail-restaurant" class="page navbar-fixed">
+      <!--  -->
+      <div class="page-content">
+         <div class="rows">
+            <div class="col-100">
+               <div class="restaurant-img">
+                  <img ng-if="ResponseData.img" ng-src="{{ ResponseData.img }}">
+                  <img ng-if="!ResponseData.img" ng-src="assets/theme/main/img/photos/1.jpg" alt="restaurant">
+               </div>
+            </div>
+         </div>
+         <div class="content-block margin-top-15  margin-bottom-10">
+            <a class="button2 button2-full laranja text-extrat-thiny" ng-controller="CameraController" ng-click="Options( ResponseData._id, ResponseData.code, false, ResponseData.UserPoints.photos)">Ganhar Carimbo </a>
+         </div>
+         <div class="content-block tabs-menu2">
+            <div class="buttons-row row">
+               <a ng-class="{'active':tab=='items'}" ng-click="tab='items'" class="tab-link2 col button2 text-extrat-thiny gray-text">Recompensas</a>
+               <a ng-class="{'active':tab=='details'}" ng-click="tab='details';getMapn()" class="tab-link2 col  button2 text-extrat-thiny gray-text">Detalhes</a>
+               <a ng-class="{'active':tab=='feedbacks'}" ng-click="tab= 'feedbacks'" class="tab-link2 col  button2 text-extrat-thiny gray-text">Feedbacks</a>
+            </div>
+         </div>
+         <div class="tabsss">
+            <div id="items" class="tab" ng-show="tab=='items'">
+               <div class="list-block media-list margin-top-15">
+                  <div class="content-block-title">
+                     <div class="row">
+                        <div class="col-50">
+                           {{ ResponseData.UserPoints.actives }} Carimbos
+                        </div>
+                     </div>
+                  </div>
+                  <ul>
+                     <li ng-repeat="(key, value) in ResponseData.Items | orderBy:orderByFunction:reverse"  ng-class="{'cinza' : value.get == true, 'laranja' : value.pointing <= ResponseData.UserPoints.actives && value.get != true}" ng-click="value.pointing <= ResponseData.UserPoints.actives && value.get != true && modalItem('{{ value._id }}', '{{ value.name }}', ' {{ value.pointing }}')" ng-if="value.pointing <= 10">
+                        <a class="item-link item-content dark">
+                           <div class="item-media"><img src="assets/theme/main/img/photos/food.jpg" width="80"></div>
+                           <div class="item-inner">
+                              <div class="item-title-row">
+                                 <div class="item-title">{{ value.name }}</div>
+                                 <div class="item-after link-deeporange"> {{ value.pointing }} </div>
+                              </div>
+                              <div class="item-text">{{ value.text }}</div>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div id="details" ng-show="tab=='details'">
+               <div class="content-block margin-top-15">
+                  <p class="text-thiny">
+                     {{ ResponseData.description }} 
+                  </p>
+                  <div id="googleMap" style="width:100%;height:200px;"></div>
+               </div>
+            </div>
+            <div id="feedbacks" class="tab" ng-show="tab=='feedbacks'">
+               <div class="list-block media-list margin-top-15">
+                  <div class="content-block-title">
+                     <div class="row">
+                        <div class="col-50">
+                           {{ ResponseData.Feedbacks.length }} Feedbacks
+                        </div>
+                     </div>
+                  </div>
+                  <ul  ng-if="ResponseData.Feedbacks.length">
+                     <li ng-repeat="(key, value) in ResponseData.Feedbacks">
+                        <a href="#" class="item-link item-content">
+                           <div class="item-media">
+                             <img ng-if="value.User.photo" ng-src="{{ value.User.photo }}" width="60">
+                             <img ng-if="!value.User.photo" ng-src="assets/theme/main/img/photos/user-1.png" width="60">
+                          </div>
+                           <div class="item-inner">
+                              <div class="item-title-row">
+                                 <div class="item-title">{{ value.User.name }}</div>
+                              </div>
+                              <!--<div class="item-subtitle">
+                                 <ul class="user-reviews-star">
+                                    <li><i class="ion-star"></i></li>
+                                    <li><i class="ion-star"></i></li>
+                                    <li><i class="ion-star"></i></li>
+                                    <li><i class="ion-star"></i></li>
+                                    <li><i class="ion-star"></i></li>
+                                 </ul>
+                              </div>-->
+                              <div class="item-text">{{ value.text }}</div>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>

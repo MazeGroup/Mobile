@@ -1,0 +1,30 @@
+<div class="bar bar-header bar-light">
+   <button ng-click="cancel();" class="button button-icon icon ion-close"></button>
+   <h1 class="title right">MAPN</h1>
+   <button ng-click="submitShare();" class="button button-icon icon ion-paper-airplane"></button>   
+</div>
+<div class="pages" ng-controller="SharePhotoController">
+<form id="socialShareForm" name="socialShareForm">
+   <div data-page="detail-restaurant" class="page navbar-fixed">
+   <div class="page-content">
+   <div class="list">
+   <div class="item item-thumbnail-right">
+      <img ng-src="{{ imageShare }}" class="full-image" >
+      <label class="item item-input" style="border: 0; border-bottom: 1px solid lightgrey;">
+      <textarea placeholder="#usemapn" id="text" name="text" ng-model="text" rows="6" style="resize: none;"> #usemapn </textarea>
+      </label>
+   </div>
+   <div class="item item-divider">
+      <b>Share</b>
+   </div>
+   <li class="item item-toggle">
+      Facebook
+      <label class="toggle toggle-positive">
+         <input type="checkbox" name="facebook" ng-click="checkFacebook()" ng-checked="HaveFacebook">
+         <div class="track">
+            <div class="handle"></div>
+         </div>
+      </label>
+   </li>
+   </ul>
+</form>

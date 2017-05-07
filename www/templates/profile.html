@@ -1,0 +1,98 @@
+<div class="pages" ng-controller="ProfileController">
+   <div data-page="detail-restaurant" class="page navbar-fixed">
+      <!--  -->
+      <div class="page-content">
+         <div class="row">
+            <div class="col">
+               <ion-item class="profile-item" style="border:0;">
+                  <div class="profile-picture big-profile-picture">
+                     <img ng-if="User.photo.length" ng-src="{{User.photo}}">
+                     <img ng-if="!User.photo.length" ng-src="assets/theme/main/img/photos/user-1.png">
+                  </div>
+                  <div class="text-small text-capitalize">
+                     {{User.name}}
+                  </div>
+               </ion-item>
+            </div>
+         </div>
+         <div class="content-block tabs-menu2" style="border:0;border-top: 1px solid #ddd;">
+            <div class="buttons-row row">
+               <a ng-class="{'active':tab=='items'}" ng-click="tab='items'" class="tab-link2 col button2 text-extrat-thiny gray-text" ng-init="tab='items'">Recompensas</a>
+               <a ng-class="{'active':tab=='details'}" ng-click="tab='details'" class="tab-link2 col  button2 text-extrat-thiny gray-text">CheckIns</a>
+               <a ng-class="{'active':tab=='feedbacks'}" ng-click="tab= 'feedbacks'" class="tab-link2 col  button2 text-extrat-thiny gray-text">Favoritos</a>
+            </div>
+         </div>
+         <div class="tabsss">
+            <div id="items" class="tab" ng-if="tab=='items'">
+               <div class="list-block media-list margin-top-15">
+                  <ul>
+                     <li ng-repeat="(key, value) in ResponseData.UserItems | orderBy: '-created_at'">
+                        <a ng-click="value.pointing <= ResponseData.UserPoints.total && value.get != true && modalItem('{{ value._id }}', '{{ value.name }}', ' {{ value.pointing }}')" class="item-link item-content dark">
+                           <div class="item-media"><img src="assets/theme/main/img/photos/food.jpg" width="80"></div>
+                           <div class="item-inner">
+                              <div class="item-title-row">
+                                 <div class="item-title">{{  value.Item.name }}</div>
+                                 <div class="item-after link-deeporange"> {{ value.Item.pointing }} </div>
+                              </div>
+                              <div class="item-text">{{ value.created_at | myDateFormat }}</div>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div id="details" class="tab" ng-if="tab=='details'">
+
+               <div id="list-restaurants">
+                  <div class="restaurant restaurantCard" ng-repeat="(key, value) in ResponseData.CheckIns" >
+                     <div class="row">
+                        <a href="#/app/local/{{ value.Place._id }}">
+                           <div class="col-100">
+                              <div class="restaurant-img" style="position: relative;">
+                                 <img  ng-if="value.Place.img" ng-src="{{ value.Place.img }}">
+                                 <img  ng-if="!value.Place.img" ng-src="assets/theme/main/img/photos/1.jpg">
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="row">
+                        <a href="#/app/local/{{ value.Place._id }}"  class="col-50">
+                           <div>
+                              <h6 class="truncate">{{ value.Place.name | limitTo: 20 }}</h6>
+                              <div class="gray-text text-thiny"> {{ value.created_at | myDateFormat }} </div>
+                           </div>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               
+            </div>
+            <div id="feedbacks" class="tab" ng-if="tab=='feedbacks'">
+               <div id="list-restaurants">
+                  <div class="restaurant restaurantCard" ng-repeat="(key, value) in ResponseData.PlacesFavorites" >
+                     <div class="row">
+                        <a href="#/app/local/{{ value.Place._id }}">
+                           <div class="col-100">
+                              <div class="restaurant-img" style="position: relative;">
+                                 <img  ng-if="value.Place.img" ng-src="{{ value.Place.img }}">
+                                 <img  ng-if="!value.Place.img" ng-src="assets/theme/main/img/photos/1.jpg">
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="row">
+                        <a href="#/app/local/{{ value.Place._id }}"  class="col-50">
+                           <div>
+                              <h6 class="truncate">{{ value.Place.name | limitTo: 20 }}</h6>
+                              <div class="gray-text text-thiny"> {{ value.Place.type }} Lanchonete </div>
+                           </div>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>

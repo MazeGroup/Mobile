@@ -1,0 +1,55 @@
+<div class="pages" ng-controller="RegisterController">
+   <div data-page="register" class="page">
+      <div class="page-content text-center">
+         <div class="page-top-cover"></div>
+         <div class="text-medium margin-top-15">Cadastre-se</div>
+         <form id="registerForm" name="registerForm" ng-submit="makeRegister(registerForm)" ng-validate="validationOptions">
+            <div class="list-block margin-bottom-40">
+               <ul class="no-border">
+                  <li>
+                     <div class="item-content">
+                        <div class="input-icon item-media"><i class="icon ion-person"></i></div>
+                        <div class="item-inner no-margin">
+                           <div class="item-input">
+                              <input id="name" placeholder="Nome" name="name" type="text" class="validate">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content">
+                        <div class="input-icon item-media"><i class="icon ion-email"></i></div>
+                        <div class="item-inner no-margin">
+                           <div class="item-input">
+                              <input id="email" placeholder="E-mail" name="email" type="text" class="validate">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="item-content">
+                        <div class="input-icon item-media"><i class="icon ion-key"></i></div>
+                        <div class="item-inner no-margin">
+                           <div class="item-input">
+                              <input id="password" placeholder="Senha" name="password" type="password" class="validate">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+            <div class="row btn-form-group margin-bottom-10">
+               <div class="col-50">
+                  <button type="submit" class="button2 button-full color-black text-thiny" style="background-color: #000; color: #fff">Cadastre-se</button>
+               </div>
+               <div class="col-50" ng-controller="SocialAuthController">
+                  <a ng-click="LoginwithFacebook()" class="button2 button2-fill color-facebook text-thiny">Facebook</a>
+               </div>
+            </div>
+            <div class="text-center margin-bottom-15">
+               <a href="#/app/index" class="text-underline gray-text">Já tem uma conta? Login! </a>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
