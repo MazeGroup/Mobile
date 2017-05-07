@@ -1,4 +1,4 @@
-var Mapn = angular.module('MAPN', ['ionic', 'ui.router', 'ngRoute', 'ngCordova', 'ngCordovaOauth', 'ngStorage', 'ngValidate', 'ngCordova', 'ionic-toast'])
+var Mapn = angular.module('MAPN', ['ionic', 'firebase', 'ui.router', 'ngRoute', 'ngCordova', 'ngCordovaOauth', 'ngStorage', 'ngValidate', 'ngCordova', 'ionic-toast'])
 var Mapn_API_URL = "http://54.200.176.218";
 var TEMPLATE_LOADING = '<ion-spinner icon="spiral"></ion-spinner>';
 
@@ -29,26 +29,28 @@ Mapn.config(function($validatorProvider, $stateProvider, $urlRouterProvider, $ro
     $validatorProvider.setDefaults({
         errorPlacement: function(error, element) {}
     });
-    if (localStorage.getItem('AUTH') != null) {
+    // if (localStorage.getItem('AUTH') != null) {
 
         $stateProvider
             .state('eventmenu', {
                 url: "/app",
                 abstract: true,
+                cache: false,
                 templateUrl: "templates/menu.html"
             })
-            .state('eventmenu.home', {
-                url: "/home",
-                controller: "HomeController",
+            .state('eventmenu.search', {
+                url: "/search",
+                controller: "SearchController",
+                cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/home.html"
+                        templateUrl: "templates/search.html"
                     }
                 }
             })
-        $urlRouterProvider.otherwise("/app/home");
+        // $urlRouterProvider.otherwise("/app/search");
 
-    } else {
+    // } else {
 
         $stateProvider
             .state('home', {
@@ -56,33 +58,34 @@ Mapn.config(function($validatorProvider, $stateProvider, $urlRouterProvider, $ro
                 templateUrl: "templates/login.html"
             })
         $urlRouterProvider.otherwise("/app");
-    }
+    // }
 });
 
-Mapn.service('GeoService', function($ionicPlatform, $cordovaGeolocation, ionicToast) {
-    return {
-        getPosition: function() {
-            
-        var posOptions = {timeout: 10000, enableHighAccuracy: false};
-        $cordovaGeolocation
-        .getCurrentPosition(posOptions).then(function (position) {
-            return localStorage.setItem('MyLocation', JSON.stringify(position.coords));
-        }, function(err) {
-            localStorage.setItem('MyLocation', JSON.stringify({
-                latitude: "-23.5711068",
-                longitude: "-46.6499716"
-            }));
-            return ionicToast.show("Sem localização", 'bottom', false, 5000);
-        });
-        }
+Mapn.factory('FIREBASE_MAZE', function( $firebaseArray ) {
+    var config = {
+        apiKey: "AIzaSyCa4BK8mag9_ZfiSWkt-nL42cXEv9wSGHs",
+        authDomain: "mercurio-15ff2.firebaseapp.com",
+        databaseURL: "https://mercurio-15ff2.firebaseio.com",
+        projectId: "mercurio-15ff2",
+        storageBucket: "mercurio-15ff2.appspot.com",
+        messagingSenderId: "1007398979159"
     };
+    firebase.initializeApp(config);
+    return {
+        getCollection: function( collection ) {
+            return $firebaseArray((firebase.database().ref(collection)));
+        },
+        push: function( collection, obj ) {
+            return firebase.database().ref(collection).push(obj);
+        }
+    }
 
 });
 
 /*
  * CONTROLLERS
  */
-Mapn.controller('LoginController', function($scope, $http, $cordovaOauth, $ionicHistory, AUTH, $ionicLoading, ionicToast) {
+Mapn.controller('LoginController', function($scope, $http, $cordovaOauth, $ionicHistory, AUTH, $ionicLoading, ionicToast, $window) {
     $scope.validationOptions = {
         rules: {
             email: {
@@ -105,21 +108,62 @@ Mapn.controller('LoginController', function($scope, $http, $cordovaOauth, $ionic
             }
         }
     }
+    // $ionicLoading.hide(); 
 
     $scope.makeLogin = function(form) {
-        var data = {'email':"user@maze.com", 'password' : "123"}; 
-        AUTH.store( data ); 
-        return window.location.reload();
+        var data = $("#loginForm").serializeArray().reduce(function(a, x) {
+                a[x.name] = x.value;
+                return a;
+            }, {}); 
+        $ionicLoading.show({
+            template: TEMPLATE_LOADING
+        });
+        AUTH.store( data );
+        $ionicLoading.hide(); 
+        return window.location.href = '#/app/search';
+        return 	$window.location.reload(true);
     }
 
 });
 
-Mapn.controller('IndexController', function($scope, $http, $cordovaOauth, $ionicHistory, AUTH, $ionicLoading, ionicToast) {
 
-    $scope.teste = function() {
-        console.log("TESTE");
-    }
-    $scope.teste();
+
+Mapn.controller('HomeController', function($scope, $http, AUTH, $ionicLoading, ionicToast, $firebaseArray) {
+
+});
+
+Mapn.controller('SearchController', function($scope, $http, AUTH, $ionicLoading, ionicToast, $ionicPopup, FIREBASE_MAZE) {
+    $scope.ResponseData = FIREBASE_MAZE.getCollection('products');
+
+    $scope.addFavorite = function( id ) {
+        FIREBASE_MAZE.push();
+        ionicToast.show(' Filiado  ', 'bottom', false, 5000);
+    } 
+
+    $scope.addProduct = function() {
+        $scope.data = {
+            "commission" : 10,
+            "description" : "Descrição",
+            "image" : "https://firebasestorage.googleapis.com/v0/b/mercurio-15ff2.appspot.com/o/smart.png?alt=media&token=eccbd1d7-78d7-4ad5-bf8f-ef8a0c81ceda",
+            "name" : "EXAMPLE",
+            "price" : 1300,
+            "title" : ""
+        };
+        var myPopup = $ionicPopup.show({
+            template: 'Nome<input type="title" ng-model="data.title" placehodler="Nome"><br>Preço<input type="price" ng-model="data.price" placehodler="Nome"><br>Comissão<input type="commission" ng-model="data.commission" placehodler="Comissão"><br>Descrição<textarea ng-model="data.description"></textarea>',
+            title: 'Adicionar produto',
+            scope: $scope,
+            buttons: [{
+                text: 'Cancelar'
+            }, {
+                text: '<b>Salvar</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return FIREBASE_MAZE.push( 'products', $scope.data)
+                }
+            }, ]
+        });
+    }    
 });
 
 Mapn.service('AUTH', [function($scope, $localStorage, $sessionStorage) {
@@ -140,7 +184,7 @@ Mapn.service('AUTH', [function($scope, $localStorage, $sessionStorage) {
             return localStorage.removeItem("AUTH");
         },
         ban: function() {
-            if (this.isAuthenticated()) return window.location.replace('/#/home');
+            if (this.isAuthenticated()) return window.location.replace('/#/app');
             return false;
         }
     };
@@ -156,7 +200,9 @@ Mapn.controller('AplicationController', ['$scope', 'AUTH', '$ionicLoading', func
             template: TEMPLATE_LOADING
         });
         AUTH.logout();
-        return window.location.reload();
+        $ionicLoading.hide();
+        return window.location.replace('/#/app');
+        // return window.location.reload();
     }
     $scope.searchPlace = function(value) {
         // if( value.length < 3)

@@ -1,0 +1,57 @@
+<div class="pages" ng-controller="SearchController">
+<a href="javascript:void(0)" class="btn-floating laranja text-extrat-thiny" style="background-color:#aa00ff;position:fixed;right:0px;bottom:0px;margin-bottom:15px;margin-right:15px;" ng-click="addProduct()"> <i class="icon ion-plus"></i> </a>  
+   <div data-page="login" class="page">
+      <div class="page-content text-center login-page">
+         <br><br>
+         <form id="searchForm" name="searchForm" ng-submit="makeSearch()" class="login-form">
+            <div class="list-block">
+               <ul class="no-border">
+                  <li>
+                     <div class="item-content">
+                        <div class="item-inner no-margin border-bottom">
+                           <div class="item-input">
+                              <input id="product" placeholder="Nome do produto" name="product" ng-model="filtro" type="text">
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+         </form>
+         <div class="row">
+            <div class="col col-xs-12">
+
+              <div class="restaurant restaurantCard" ng-if="ResponseData.length" ng-repeat="(key, value) in ResponseData | filter:filtro" >
+                  <div class="row">
+                    <a href="javascript:void(0)">                   
+                     <div class="col-100">
+                        <div class="restaurant-img" style="position: relative;">
+                           <img  ng-if="value.image" ng-src="{{ value.image }}">
+                           <img  ng-if="!value.image" ng-src="assets/theme/main/img/photos/1.jpg">
+                           <div class="restaurantCardTitle">
+                        <a ng-if="!value.favorite" href="javascript:void(0)" ng-click="addFavorite( value.$id )"  class="btn-floating laranja text-extrat-thiny"> <i class="icon ion-star"></i> </a>                     
+                           </div>
+                        </div>
+                     </div>
+                     </a>
+                  </div>
+                  <div class="row">
+                      <a href="javascript:void(0)"  class="col-50"> 
+                     <div>
+                        <h6 class="truncate">{{ value.title | limitTo: 20 }}</h6>
+                        <h6>R$ {{ value.price }} ( {{ value.commission }} % )</h6>
+                     </div>
+                     </a>
+                     <div class="col-50">
+                        <a href="javascript:void(0)" ng-click="addFavorite( value.$id )" class="button2 laranja text-extrat-thiny"> Filiar-se </a> 
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
