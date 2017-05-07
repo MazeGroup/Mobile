@@ -1,15 +1,14 @@
-<div class="pages" ng-controller="IndexController">
+<div class="pages" ng-controller="LoginController">
    <div data-page="login" class="page">
-      <div class="page-content text-center">
-         <div class="page-top-cover"></div>
-         <div class="text-medium margin-top-15">Login</div>
-         <form id="loginForm" name="loginForm" ng-submit="makeLogin(loginForm)" ng-validate="validationOptions">
-            <div class="list-block margin-bottom-40">
+      <div class="page-content text-center login-page">
+         <img src="/img/mazer-logo.png" class="logo-mazer" />
+         <form id="loginForm" name="loginForm" ng-submit="makeLogin()"  class="login-form">
+            <div class="list-block">
                <ul class="no-border">
                   <li>
                      <div class="item-content">
                         <div class="input-icon item-media"><i class="icon ion-email"></i></div>
-                        <div class="item-inner no-margin">
+                        <div class="item-inner no-margin border-bottom">
                            <div class="item-input">
                               <input id="email" placeholder="E-mail" name="email" type="text" class="validate">
                            </div>
@@ -19,7 +18,7 @@
                   <li>
                      <div class="item-content">
                         <div class="input-icon item-media"><i class="icon ion-key"></i></div>
-                        <div class="item-inner no-margin">
+                        <div class="item-inner no-margin border-bottom">
                            <div class="item-input">
                               <input id="password" placeholder="Senha" name="password" type="password" class="validate">
                            </div>
@@ -28,19 +27,21 @@
                   </li>
                </ul>
             </div>
-            <div class="row btn-form-group margin-bottom-10">
-               <div class="col-50">
-                  <button type="submit" class="button2 button-full color-black text-thiny" style="background-color: #000; color: #fff">Login</button>
-               </div>
          </form>
-               
-               <div class="col-50" ng-controller="SocialAuthController">
-                  <a ng-click="LoginwithFacebook()" class="button2 button2-fill color-facebook text-thiny">Facebook</a>
-               </div>
+         <div class="row">
+            <div class="col col-xs-12">
+               <button type="submit" class="button button-block btn-circle" ng-click="makeLogin()">ENTRAR</button>
             </div>
-            <div class="text-center margin-bottom-15">
-               <a href="#/app/register" class="text-underline gray-text">Você não tem uma conta? Cadastre-se agora</a>
+         </div>
+         <div class="row">
+            <div class="col col-xs-12">
+               <button type="submit" class="button button-block btn-circle">Entrar com Facebook</button>
             </div>
+         </div>
+         <div class="text-center margin-bottom-15">
+            <a href="#/app/register" class="text-underline text-white">Você não tem uma conta? <br>Cadastre-se agora</a>
+         </div>
       </div>
    </div>
+</div>
 </div>

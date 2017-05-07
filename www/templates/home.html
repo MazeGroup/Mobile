@@ -1,48 +1,34 @@
-<style>
-    .popup-vertical-buttons .popup-buttons {
-  display: block;
-}
-.popup-vertical-buttons .popup-buttons .button{
-  display:block;
-  min-width: 100% !important;
-}
-</style>
-<div class="pages" ng-controller="HomeController">
-   <div data-page="restaurants" class="page toolbar-fixed">
-      <!-- TAB LIST -->
-      <div class="page-content tab active">
-            <div id="list-restaurants">
-
-               <div class="restaurant restaurantCard" ng-if="ResponseData.length" ng-repeat="(key, value) in ResponseData" >
-                  <div class="row">
-                    <a href="#/app/local/{{ value._id }}">                   
-                     <div class="col-100">
-                        <div class="restaurant-img" style="position: relative;">
-                           <img  ng-if="value.img" ng-src="{{ value.img }}">
-                           <img  ng-if="!value.img" ng-src="assets/theme/main/img/photos/1.jpg">
-                           <div class="restaurantCardTitle">
-                        <a ng-if="!value.favorite" href="javascript:void(0)" ng-click="favorite('{{ value._id }}')" class="btn-floating laranja text-extrat-thiny"> <i class="icon ion-star"></i> </a>
-                        <a ng-if="value.favorite" href="javascript:void(0)" ng-click="favorite('{{ value._id }}')"  class="btn-floating cinza-darken text-extrat-thiny"> <i class="icon ion-star"></i> </a>
-                     
+<div class="pages" ng-controller="IndexController">
+   <div data-page="login" class="page">
+      <div class="page-content text-center login-page">
+         <br><br>
+         <form id="searchForm" name="searchForm" ng-submit="makeSearch()" class="login-form">
+            <div class="list-block">
+               <ul class="no-border">
+                  <li>
+                     <div class="item-content">
+                        <div class="item-inner no-margin border-bottom">
+                           <div class="item-input">
+                              <input id="email" placeholder="Nome do produto" name="product" type="text">
                            </div>
                         </div>
                      </div>
-                     </a>
-                  </div>
-                  <div class="row">
-                      <a href="#/app/local/{{ value._id }}"  class="col-50"> 
-                     <div>
-                        <h6 class="truncate">{{ value.name | limitTo: 20 }}</h6>
-                        <div class="gray-text text-thiny"> {{ value.type }} Lanchonete </div>
-                     </div>
-                     </a>
-                     <div class="col-50">
-                        <a href="javascript:void(0)" ng-controller="CameraController" ng-click="Options( '{{value._id}}', '{{value.code}}', true, '{{value.photos}}')" class="button2 laranja text-extrat-thiny"> Ganhar Carimbo </a> 
-                     </div>
-                  </div>
-               </div>
-
+                  </li>
+               </ul>
+            </div>
+         </form>
+         <div class="row">
+            <div class="col col-xs-12">
+               <button type="submit" class="button button-block btn-circle"><i class="fa fa-search"></i>&nbsp Buscar</button>
             </div>
          </div>
+         <p class="text-white">Ou</p>
+         <div class="row">
+            <div class="col col-xs-12">
+               <button type="submit" class="button button-block btn-circle">Abrir catálogo</button>
+            </div>
+         </div>
+      </div>
    </div>
+</div>
 </div>

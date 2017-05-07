@@ -417,3 +417,87 @@ Template:		Comida - Restaurant reservations Responsive App Mobile
     display: block;
     margin: 0 auto;
 }
+
+.login-page {
+    background-image: url("http://www.tripwiremagazine.com/wp-content/uploads/2013/05/7.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-form {
+    color: #fff;
+    width: 90%;
+}
+
+.list-block input[type=text]::-webkit-input-placeholder {
+    color: #fff;
+}
+.list-block input[type=password]::-webkit-input-placeholder {
+    color: #fff;
+}
+
+::-webkit-input-placeholder {
+    color: #fff;
+}-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #fff;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #fff;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #fff;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #5e736d;
+}
+
+.button-full {
+    width: 100%;
+}
+
+.btn-circle {
+    border-radius: 50px;
+    background: #28b892;
+    border-color: #28b892;
+    color: #fff;
+}
+
+.button:hover {
+    color: #fff;
+    background-color: #38bf9c;
+    border-color: #38bf9c;
+}
+
+.logo-mazer {
+    max-height: 110px;
+    width: 250px;
+}
+
+.list-block input[type=text] {
+    color: #fff;
+}
+.list-block input[type=password] {
+    color: #fff;
+}
+
+.input#email.validate {
+    color: #fff;
+}
+
+.bar.bar-dark {
+    background: transparent;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.main-screen-title {
+    font-size: 22px;
+    text-align: center;
+}

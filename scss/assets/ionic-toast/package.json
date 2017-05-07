@@ -1,0 +1,79 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ionic-toast",
+        "scope": null,
+        "escapedName": "ionic-toast",
+        "name": "ionic-toast",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/descripto/Projects/Mapn/mapn"
+    ]
+  ],
+  "_from": "ionic-toast@latest",
+  "_id": "ionic-toast@0.4.1",
+  "_inCache": true,
+  "_location": "/ionic-toast",
+  "_nodeVersion": "6.4.0",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/ionic-toast-0.4.1.tgz_1476679263199_0.6024230236653239"
+  },
+  "_npmUser": {
+    "name": "rajeshwarpatlolla",
+    "email": "rajeshwar.patlolla@gmail.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ionic-toast",
+    "scope": null,
+    "escapedName": "ionic-toast",
+    "name": "ionic-toast",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ionic-toast/-/ionic-toast-0.4.1.tgz",
+  "_shasum": "13cdbccd33f60a43c953f3eda2d89e24522ffe65",
+  "_shrinkwrap": null,
+  "_spec": "ionic-toast",
+  "_where": "/home/descripto/Projects/Mapn/mapn",
+  "author": {
+    "name": "https://github.com/rajeshwarpatlolla, rajeshwar.patlolla@gmail.com"
+  },
+  "dependencies": {},
+  "description": "A toast for IONIC framework",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-css2js": "^1.0.2",
+    "gulp-uglify": "^1.5.3"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "13cdbccd33f60a43c953f3eda2d89e24522ffe65",
+    "tarball": "https://registry.npmjs.org/ionic-toast/-/ionic-toast-0.4.1.tgz"
+  },
+  "gitHead": "c4a023883cb348a8034c6451b21d62d506c9de75",
+  "license": "MIT",
+  "main": "./dist/ionic-toast.bundle.min.js",
+  "maintainers": [
+    {
+      "name": "rajeshwarpatlolla",
+      "email": "rajeshwar.patlolla@gmail.com"
+    }
+  ],
+  "name": "ionic-toast",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {},
+  "version": "0.4.1"
+}

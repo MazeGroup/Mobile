@@ -1,0 +1,72 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-form-validate",
+        "scope": null,
+        "escapedName": "angular-form-validate",
+        "name": "angular-form-validate",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/descripto/Projects/Mapn/mapn"
+    ]
+  ],
+  "_from": "angular-form-validate@latest",
+  "_id": "angular-form-validate@1.0.0",
+  "_inCache": true,
+  "_location": "/angular-form-validate",
+  "_nodeVersion": "5.1.1",
+  "_npmOperationalInternal": {
+    "host": "packages-5-east.internal.npmjs.com",
+    "tmp": "tmp/angular-form-validate-1.0.0.tgz_1454441249605_0.35180484410375357"
+  },
+  "_npmUser": {
+    "name": "polochon",
+    "email": "gaignoux.nicolas@gmail.com"
+  },
+  "_npmVersion": "3.5.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-form-validate",
+    "scope": null,
+    "escapedName": "angular-form-validate",
+    "name": "angular-form-validate",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-form-validate/-/angular-form-validate-1.0.0.tgz",
+  "_shasum": "fdd5b8fc90beaf6a69cde00a2c73ea57218e9da7",
+  "_shrinkwrap": null,
+  "_spec": "angular-form-validate",
+  "_where": "/home/descripto/Projects/Mapn/mapn",
+  "dependencies": {},
+  "description": "[![Bower](https://img.shields.io/bower/v/jpkleemans-angular-validate.svg)](https://github.com/jpkleemans/angular-validate/releases/latest)\r [![GitHub license](https://img.shields.io/github/license/jpkleemans/angular-validate.svg)](https://github.com/jpkle",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-uglify": "~0.9.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "fdd5b8fc90beaf6a69cde00a2c73ea57218e9da7",
+    "tarball": "https://registry.npmjs.org/angular-form-validate/-/angular-form-validate-1.0.0.tgz"
+  },
+  "gitHead": "1483589a21716da214253a6e0685dbe60bcd80a4",
+  "maintainers": [
+    {
+      "name": "polochon",
+      "email": "gaignoux.nicolas@gmail.com"
+    }
+  ],
+  "name": "angular-form-validate",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {},
+  "version": "1.0.0"
+}
